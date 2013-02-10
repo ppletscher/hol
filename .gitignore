@@ -1,0 +1,15 @@
+local
+output
+data
+submit_grabcut.sh
+matluster
+mosek
+matluster
+svmstruct
+mpe_inference
+grabcutMain
+logs
+mccExcludedFiles.log
+readme.txt
+run_grabcutMain.sh
+*.out
