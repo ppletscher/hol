@@ -4,8 +4,6 @@ data
 submit_grabcut.sh
 matluster
 mosek
-matluster
-svmstruct
 mpe_inference
 grabcutMain
 logs
