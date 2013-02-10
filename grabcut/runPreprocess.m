@@ -8,7 +8,7 @@ cd ..;
 data_dir = 'data/';
 
 %local_dir = 'local/';
-%options = [];
+options = [];
 
 % preprocess all the images and store preprocessed energies in local/
 files = dir([data_dir 'images/*.jpg']);
@@ -17,7 +17,7 @@ files = [files; dir([data_dir 'images/*.png'])];
 example_filenames = cell(numel(files),1);
 h = waitbar(0, 'Preprocessing images...');
 for f_idx = 1:numel(files) 
-    waitbar(f_idx/numel(files), h);
+    %waitbar(f_idx/numel(files), h);
     example = preprocessImage(files(f_idx).name, data_dir, options);
     fname = files(f_idx).name(1:end-4);
     fname = [local_dir fname '.mat'];
