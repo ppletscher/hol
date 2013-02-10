@@ -11,3 +11,5 @@ mccExcludedFiles.log
 readme.txt
 run_grabcutMain.sh
 *.out
+gsc-1.2
+gsc-1.2.tgz
