@@ -45,6 +45,8 @@ a. obtain mpe_inference and matluster
     git clone git@github.com:ppletscher/matluster.git
     git clone git@github.com:ppletscher/mpe_inference.git
 
+   switch to mpe_inference and run 'make'.
+
 b. Install the mosek toolbox in a subfolder grabcut/mosek. You need the "free academic
    license". I would recommend just creating a symlink to a central place
    where you save the mosek toolbox, such as ~/mosek.
