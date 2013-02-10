@@ -56,19 +56,33 @@ c. Obtain the images and corresponding segmentations from:
    Unpack the files into a grabcut/data/ folder. The folder should now contain
    three subfolders: images, images-gt and images-labels.
 
-d. In Matlab run the command:
-   runPreprocessAll;
+   Furthermore, install the gsc-1.2 software by downloading it from:
+
+   http://www.robots.ox.ac.uk/~vgg/software/iseg/
+
+   and put it into grabcut/gsc-1.2. Run
+
+   setup()
+   compile_mex
+
+   from within Matlab.
+
+d. In matlab go to preprocess and run
+   mex mex_setupTransductionGraphNew.cpp
 
 e. In Matlab run the command:
+   runPreprocessAll;
+
+f. In Matlab run the command:
    grabcutPrepare;
 
-f. On the command-line compile the main script:
+g. On the command-line compile the main script:
    ./brutus_compile.sh
 
-g. From the command-line submit the jobs to the cluster:
+h. From the command-line submit the jobs to the cluster:
    ./submit_grabcut.sh
 
-h. Once all the jobs have successfully completed, run the collection from
+i. Once all the jobs have successfully completed, run the collection from
    within Matlab:
    grabcutCollect;
 
