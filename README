@@ -1,0 +1,94 @@
+Learning Low-order Models for Enforcing High-order Statistics
+=============================================================
+
+This software implements the learning approach introduced in:
+
+Patrick Pletscher & Pushmeet Kohli
+Learning Low-order Models for Enforcing High-order Statistics
+AISTATS, 2012.
+
+The paper can be downloaded from:
+
+http://pletscher.org/papers/pletscher2012hol.pdf
+
+If you use the software in your work, then please consider citing the paper as
+follows:
+
+@inproceedings{Pletscher2012b,
+  author    = {Pletscher, Patrick and Kohli, Pushmeet},
+  title     = {Learning Low-order Models for Enforcing High-order Statistics},
+  booktitle	= {Proceedings of the Fifteenth International
+               Conference on Artificial Intelligence
+               and Statistics ({AISTATS}) 2012},
+  pages     = {886--894},
+  year      = {2012},
+  publisher = {JMLR: W\&CP 22},
+  address   = {La Palma, Canary Islands},
+  editor    = {Neil Lawrence and Mark Girolami}  
+}
+
+
+1. Installation
+---------------
+
+The implementation splits the work into three parts: prepare, main and
+collect, so that things can easily be run on a cluster for different data
+sets and features. Most of the main logic is in grabcut/grabcutMain.m and the scripts
+it is calling. If you want to run the main script on a cluster, I recommend
+compiling it with something along the lines of the command brutus_compile.sh
+(note: you'll need to adapt the mosek path in this file). The step-by-step
+guide below describes the workflow assuming you compile the code.
+
+a. obtain mpe_inference and matluster
+    
+    cd grabcut
+    git clone git@github.com:ppletscher/matluster.git
+    git clone git@github.com:ppletscher/mpe_inference.git
+
+b. Install the mosek toolbox in a subfolder grabcut/mosek. You need the "free academic
+   license". I would recommend just creating a symlink to a central place
+   where you save the mosek toolbox, such as ~/mosek.
+
+c. Obtain the images and corresponding segmentations from:
+   
+   http://www.robots.ox.ac.uk/~vgg/data/iseg/
+
+   Unpack the files into a grabcut/data/ folder. The folder should now contain
+   three subfolders: images, images-gt and images-labels.
+
+d. In Matlab run the command:
+   runPreprocessAll;
+
+e. In Matlab run the command:
+   grabcutPrepare;
+
+f. On the command-line compile the main script:
+   ./brutus_compile.sh
+
+g. From the command-line submit the jobs to the cluster:
+   ./submit_grabcut.sh
+
+h. Once all the jobs have successfully completed, run the collection from
+   within Matlab:
+   grabcutCollect;
+
+
+
+2. Authors
+----------
+
+The software was written by:
+Patrick Pletscher and Pushmeet Kohli
+
+We would like to acknowledge:
+- Sebastian Nowozin for input about Mosek and pruning strategies.
+- Aditya Khosla for general feedback.
+
+For convenience we included the gsc-1.2 package, which can be obtained from
+here:
+
+http://www.robots.ox.ac.uk/~vgg/research/iseg/
+
+If you use the gsc code, please also acknowledge the relevant paper:
+Geodesic Star Convexity for Interactive Image Segmentation 
+V. Gulshan, C. Rother, A. Criminisi, A. Blake and A. Zisserman at CVPR 2010
